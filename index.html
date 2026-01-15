@@ -14,6 +14,7 @@
             --bg-deep: #010409;
             --bg-navy: #020c1b;
             --accent-indigo: #6366f1;
+            --city-glow: #0a192f;
         }
         body {
             font-family: 'Inter', sans-serif;
@@ -21,12 +22,14 @@
             color: #ffffff;
             scroll-behavior: smooth;
             overflow-x: hidden;
+            margin: 0;
+            padding: 0;
         }
         .serif {
             font-family: 'Playfair Display', serif;
         }
 
-        /* Starry Sky Background */
+        /* Starry Night City Background */
         .sky-container {
             position: fixed;
             top: 0;
@@ -34,8 +37,20 @@
             width: 100%;
             height: 100%;
             z-index: -2;
-            background: linear-gradient(to bottom, #010409 0%, #020c1b 40%, #0a192f 100%);
+            background: linear-gradient(to bottom, #020c1b 0%, #010409 100%);
             overflow: hidden;
+        }
+
+        /* Milky Way effect */
+        .milky-way {
+            position: absolute;
+            top: -20%;
+            left: -10%;
+            width: 140%;
+            height: 140%;
+            background: radial-gradient(ellipse at center, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+            transform: rotate(-25deg);
+            pointer-events: none;
         }
 
         .star {
@@ -43,59 +58,65 @@
             background: white;
             border-radius: 50%;
             opacity: 0.1;
-            animation: twinkle var(--duration) infinite ease-in-out;
+            pointer-events: none;
+            animation: twinkle var(--duration) infinite ease-in-out, float var(--float-duration) infinite ease-in-out;
         }
 
         .star.bright {
-            box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.6);
+            box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.4);
         }
 
         @keyframes twinkle {
             0%, 100% { opacity: 0.2; transform: scale(1); }
-            50% { opacity: 0.8; transform: scale(1.3); }
+            50% { opacity: 0.9; transform: scale(1.2); }
         }
 
-        /* Luminous Moon */
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(var(--float-x), var(--float-y)); }
+        }
+
+        /* Luminous Crescent Moon */
         .moon {
             position: absolute;
-            top: 60px;
+            top: 100px;
             left: 10%;
-            width: 80px;
-            height: 80px;
-            background: radial-gradient(circle at 30% 30%, #ffffff 0%, #f0f4ff 100%);
+            width: 70px;
+            height: 70px;
+            background: #fdfdfd;
             border-radius: 50%;
-            box-shadow: 0 0 50px 10px rgba(255, 255, 255, 0.2), 0 0 100px 20px rgba(99, 102, 241, 0.1);
+            box-shadow: 0 0 50px 10px rgba(255, 255, 255, 0.2), 0 0 100px 30px rgba(99, 102, 241, 0.1);
             z-index: -1;
-            opacity: 0.8;
+            opacity: 0.9;
         }
 
-        /* City Skyline Silhouette */
+        /* Detailed Cityscape with Lights */
         .cityscape {
             position: fixed;
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 300px;
+            height: 400px;
             background: linear-gradient(to top, #000 30%, transparent 100%);
             z-index: -1;
             pointer-events: none;
-            opacity: 0.8;
+            opacity: 0.7;
         }
 
         .city-svg {
             position: absolute;
             bottom: 0;
             width: 100%;
-            height: 150px;
+            height: 180px;
             fill: #000;
         }
 
-        /* UI Elements Refinement */
+        /* UI Styling Refinements */
         .glass {
-            background: rgba(10, 20, 45, 0.4);
+            background: rgba(10, 20, 45, 0.3);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+            box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.5);
         }
         
         .gradient-text {
@@ -104,23 +125,18 @@
             -webkit-text-fill-color: transparent;
         }
 
-        .shadow-glow {
-            box-shadow: 0 0 30px rgba(99, 102, 241, 0.1);
-        }
-
-        @keyframes fade-in {
-            from { opacity: 0; transform: translateY(20px); }
+        @keyframes slide-up {
+            from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .animate-fade-in {
-            animation: fade-in 1s ease-out forwards;
+        .animate-slide-up {
+            animation: slide-up 1s cubic-bezier(0.2, 1, 0.3, 1) forwards;
         }
 
-        /* Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--bg-deep); }
-        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: var(--accent-indigo); }
+        /* Vercel-ready clean transitions */
+        .transition-dream {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
 
         @media print {
             .sky-container, .moon, .cityscape { display: none !important; }
@@ -141,13 +157,13 @@
 </head>
 <body>
     <div class="sky-container" id="stars">
+        <div class="milky-way"></div>
         <div class="moon"></div>
     </div>
     
     <div class="cityscape">
         <svg class="city-svg" viewBox="0 0 1200 150" preserveAspectRatio="none">
-            <!-- Detailed City Silhouette -->
-            <path d="M0 150 L0 120 L20 120 L20 100 L40 100 L40 130 L60 130 L60 80 L80 80 L80 110 L100 110 L100 60 L130 60 L130 120 L150 120 L150 90 L180 90 L180 130 L210 130 L210 40 L240 40 L240 110 L270 110 L270 70 L300 70 L300 130 L330 130 L330 50 L360 50 L360 120 L400 120 L400 80 L430 80 L430 110 L460 110 L460 30 L500 30 L500 120 L530 120 L530 60 L560 60 L560 110 L600 110 L600 50 L640 50 L640 130 L680 130 L680 70 L720 70 L720 110 L760 110 L760 20 L800 20 L800 130 L840 130 L840 60 L880 60 L880 110 L920 110 L920 40 L960 40 L960 120 L1000 120 L1000 80 L1040 80 L1040 110 L1080 110 L1080 50 L1120 50 L1120 130 L1160 130 L1160 90 L1200 90 L1200 150 Z"></path>
+            <path d="M0 150 L0 125 L25 125 L25 110 L45 110 L45 135 L70 135 L70 85 L95 85 L95 115 L120 115 L120 65 L155 65 L155 125 L180 125 L180 95 L215 95 L215 135 L250 135 L250 45 L285 45 L285 115 L320 115 L320 75 L355 75 L355 135 L390 135 L390 55 L425 55 L425 125 L470 125 L470 85 L505 85 L505 115 L540 115 L540 35 L585 35 L585 125 L620 125 L620 65 L655 65 L655 115 L700 115 L700 55 L745 55 L745 135 L790 135 L790 75 L835 75 L835 115 L880 115 L880 25 L925 25 L925 135 L970 135 L970 65 L1015 65 L1015 115 L1060 115 L1060 45 L1105 45 L1105 125 L1150 125 L1150 85 L1200 85 L1200 150 Z"></path>
         </svg>
     </div>
 
@@ -155,17 +171,26 @@
 
     <script>
         const starsContainer = document.getElementById('stars');
-        const count = 450;
+        const count = 500; 
         for (let i = 0; i < count; i++) {
             const star = document.createElement('div');
-            const isBright = Math.random() > 0.94;
+            const isBright = Math.random() > 0.95;
             star.className = isBright ? 'star bright' : 'star';
-            const size = Math.random() * (isBright ? 2.5 : 1.2) + 0.3;
+            
+            const size = Math.random() * (isBright ? 2.2 : 1) + 0.3;
             star.style.width = `${size}px`;
             star.style.height = `${size}px`;
-            star.style.top = `${Math.random() * 85}%`; // Stay away from bottom cityscape
+            star.style.top = `${Math.random() * 100}%`;
             star.style.left = `${Math.random() * 100}%`;
+            
             star.style.setProperty('--duration', `${Math.random() * 4 + 3}s`);
+            star.style.setProperty('--float-duration', `${Math.random() * 20 + 15}s`);
+            
+            const moveX = (Math.random() - 0.5) * 60; 
+            const moveY = (Math.random() - 0.5) * 60; 
+            star.style.setProperty('--float-x', `${moveX}px`);
+            star.style.setProperty('--float-y', `${moveY}px`);
+            
             star.style.animationDelay = `${Math.random() * 10}s`;
             starsContainer.appendChild(star);
         }

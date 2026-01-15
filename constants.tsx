@@ -4,7 +4,7 @@ import { Project, Experience, Skill, Book, Certification, Award } from './types'
 export const PROFILE = {
   name: "전해인",
   title: "KEPCO ICT Specialist",
-  introduction: "전력 데이터의 정밀함에 AI의 지능을 더하는 하드웨어-소프트웨어 융합형 ICT 인재입니다. 메카트로닉스 공학 기반의 임베디드 제어, 데이터 신뢰성 확보, 지능형 감시 시스템 구현 경험을 바탕으로 전력 계통의 안정성과 효율을 높하고자 합니다. KS 표준과 절차 준수를 설계의 출발점으로 삼으며, 문제를 데이터와 논리로 해결하는 엔지니어링 근성을 갖추고 있습니다. 디지털 변전소와 스마트 그리드 환경에서 현장과 시스템을 연결하는 ICT 전문가로 성장하는 것이 목표입니다.",
+  introduction: "전력 데이터의 정밀함에 AI의 지능을 더하는 하드웨어-소프트웨어 융합형 ICT 인재입니다. 메카트로닉스 공학 기반의 임베디드 제어, 데이터 신뢰성 확보, 지능형 감시 시스템 구현 경험을 바탕으로 전력 계통의 안정성과 효율을 높이고자 합니다. KS 표준과 절차 준수를 설계의 출발점으로 삼으며, 문제를 데이터와 논리로 해결하는 엔지니어링 근성을 갖추고 있습니다. 디지털 변전소와 스마트 그리드 환경에서 현장과 시스템을 연결하는 ICT 전문가로 성장하는 것이 목표입니다.",
   phone: "010-1234-1234",
   email: "hae.in@example.com",
   education: {
@@ -56,7 +56,7 @@ export const PROJECTS: Project[] = [
     solutions: ["색공간 분석 적용", "좌표 보정 로직 추가", "제어 파라미터 튜닝", "KS 표준 기반 기준 수립"],
     learnings: "비전 기술은 전력 설비 무인 감시에 직접 확장 가능함을 체감했습니다.",
     kepcoVision: "해당 AI 오염 탐지 로직을 디지털 변전소 내 주요 설비의 부식/과열 부위를 CCTV로 실시간 감지하는 무인 감시 시스템으로 확장하여, 설비 안전성 및 유지보수 효율을 극대화할 수 있습니다.",
-    imagePrompt: "A high-tech robotic cleaning head operating in a futuristic room overlooking a city at night, starry sky and bright moon visible through large glass windows, indigo neon lighting, highly detailed tech components."
+    imagePrompt: "Futuristic robotic vision scanning industrial equipment at night, cinematic dark navy sky with bright stars visible in background window, silver moonlight reflections, glowing indigo scanning lines."
   },
   {
     id: "proj2",
@@ -78,7 +78,7 @@ export const PROJECTS: Project[] = [
     solutions: ["고성능 제어 구조 전환", "파라미터 최적화", "실시간 모니터링", "로그 분석"],
     learnings: "복잡한 기구학 제어에도 전력 인프라 제어와 동일한 구조적 사고가 적용됨을 이해했습니다.",
     kepcoVision: "대규모 전력 인프라 관리에 필수적인 '실시간 데이터 처리' 및 '복잡한 다중 변수 제어 알고리즘 최적화' 능력을 보여주며, 지능형 전력망 시스템의 운용 안정성에 기여합니다.",
-    imagePrompt: "Close-up of a 5-axis mechanical nozzle moving fast, illuminated by silver moonlight from a nearby window, dark navy room, glowing indigo circuit board traces, city lights bokeh in the far background."
+    imagePrompt: "Detailed macro of a 5-axis 3D printer mechanical head moving at high speed, night workshop with vast starry sky through a large skylight, glowing circuit paths, cinematic indigo lighting."
   },
   {
     id: "proj3",
@@ -99,7 +99,7 @@ export const PROJECTS: Project[] = [
     solutions: ["커패시터 필터링", "진리표 기반 조합 논리 설계", "데이터 시트 심층 분석"],
     learnings: "디지털 신호가 실제 물리적 환경에서 어떻게 오차를 일으키는지 분석한 경험은 ICT 운영 직무의 핵심 자산임을 깨달았습니다.",
     kepcoVision: "전력 계통의 기본인 '주파수 제어 및 동기화'에 대한 본질적인 이해를 증명합니다. 물리적 환경의 오차를 분석하고 해결한 경험은 전력 계통 운영의 신뢰성을 보장하는 밑바탕이 됩니다.",
-    imagePrompt: "A glowing green digital clock circuit on a desk at night, stars visible through the window, silhouette of a person studying, cinematic lighting, indigo and silver tones."
+    imagePrompt: "Glowing digital clock circuit on a desk, dark night room, city lights blurred in distant background, bright stars and moon glow, high-end technical photography aesthetic."
   },
   {
     id: "proj4",
@@ -120,7 +120,7 @@ export const PROJECTS: Project[] = [
     solutions: ["빅데이터 핸들링", "정합성 검증 로직", "파라미터 반복 튜닝"],
     learnings: "실제 설비에 무리를 주지 않고 가상 세계에서 최적의 효율을 찾아내는 역량을 길렀습니다.",
     kepcoVision: "한전이 미래 전략으로 삼고 있는 '디지털 변전소'나 '가상 발전소(VPP)' 운영 시, 실제 설비에 무리를 주지 않고 가상 세계에서 최적의 운용 효율을 찾아내는 의사결정 역량을 제공합니다.",
-    imagePrompt: "Futuristic digital twin UI floating over a dark night landscape of a city, constellation-like data connections, glowing mechanical diagrams, midnight blue atmosphere."
+    imagePrompt: "Ethereal digital twin hologram of a power station floating over a dark night cityscape, sparkling star field as background, blueprint aesthetic with luminous blue lines."
   },
   {
     id: "proj5",
@@ -141,7 +141,7 @@ export const PROJECTS: Project[] = [
     solutions: ["5차 다항식 회귀분석", "다단 증폭 회로 설계", "Filtering & Smoothing"],
     learnings: "전력 계측에서 데이터 신뢰성이 핵심임을 명확히 인식했습니다.",
     kepcoVision: "'완벽한 하드웨어는 없다'는 전제 하에, 센서의 물리적 한계를 소프트웨어적 지능으로 극복하여 데이터 신뢰성을 확보하는 역량은 한전의 고정밀 계측 인프라에 직결됩니다.",
-    imagePrompt: "Glowing data curves forming a path through a starry night sky, reflecting on a dark water surface of a city harbor, tech nodes as stars, elegant mathematical visualization."
+    imagePrompt: "Golden polynomial curve glowing in a deep indigo night sky full of stars, technical data points reflecting on a dark surface, futuristic engineering insight visualization."
   },
   {
     id: "proj6",
@@ -162,7 +162,7 @@ export const PROJECTS: Project[] = [
     solutions: ["바이패스 커패시터 적용", "임베디드 하드웨어 최적화", "실제 소자 테스트 반영"],
     learnings: "실제 소자의 오차 범위를 이해하고 이를 설계에 반영하는 '완벽주의적 집요함'을 배웠습니다.",
     kepcoVision: "한전의 통신 선로나 제어 회로에서 발생할 수 있는 노이즈 문제와 신호 감쇄 문제를 이해하고 하드웨어적 근간에서 해결할 수 있는 무결성 분석 역량을 보여줍니다.",
-    imagePrompt: "Electrical signals visualized as shooting stars over a dark silhouette of a city skyline, technical blueprint overlays on the night sky, luminous indigo pulses."
+    imagePrompt: "Circuit diagram of a BJT amplifier glowing with silver electric current, dark night sky background with stars, city silhouette reflection, elegant engineering schematic art."
   }
 ];
 
