@@ -1,0 +1,174 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전해인 | KEPCO ICT Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #010409;
+            --bg-navy: #020c1b;
+            --accent-indigo: #6366f1;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-deep);
+            color: #ffffff;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        .serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Starry Sky Background */
+        .sky-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: linear-gradient(to bottom, #010409 0%, #020c1b 40%, #0a192f 100%);
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: twinkle var(--duration) infinite ease-in-out;
+        }
+
+        .star.bright {
+            box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.6);
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.3); }
+        }
+
+        /* Luminous Moon */
+        .moon {
+            position: absolute;
+            top: 60px;
+            left: 10%;
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle at 30% 30%, #ffffff 0%, #f0f4ff 100%);
+            border-radius: 50%;
+            box-shadow: 0 0 50px 10px rgba(255, 255, 255, 0.2), 0 0 100px 20px rgba(99, 102, 241, 0.1);
+            z-index: -1;
+            opacity: 0.8;
+        }
+
+        /* City Skyline Silhouette */
+        .cityscape {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(to top, #000 30%, transparent 100%);
+            z-index: -1;
+            pointer-events: none;
+            opacity: 0.8;
+        }
+
+        .city-svg {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 150px;
+            fill: #000;
+        }
+
+        /* UI Elements Refinement */
+        .glass {
+            background: rgba(10, 20, 45, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #ffffff 0%, #a5b4fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .shadow-glow {
+            box-shadow: 0 0 30px rgba(99, 102, 241, 0.1);
+        }
+
+        @keyframes fade-in {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fade-in 1s ease-out forwards;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent-indigo); }
+
+        @media print {
+            .sky-container, .moon, .cityscape { display: none !important; }
+            body { background: white !important; color: black !important; }
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://esm.sh/@google/genai@^1.36.0",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react-dom": "https://esm.sh/react-dom@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
+  }
+}
+</script>
+</head>
+<body>
+    <div class="sky-container" id="stars">
+        <div class="moon"></div>
+    </div>
+    
+    <div class="cityscape">
+        <svg class="city-svg" viewBox="0 0 1200 150" preserveAspectRatio="none">
+            <!-- Detailed City Silhouette -->
+            <path d="M0 150 L0 120 L20 120 L20 100 L40 100 L40 130 L60 130 L60 80 L80 80 L80 110 L100 110 L100 60 L130 60 L130 120 L150 120 L150 90 L180 90 L180 130 L210 130 L210 40 L240 40 L240 110 L270 110 L270 70 L300 70 L300 130 L330 130 L330 50 L360 50 L360 120 L400 120 L400 80 L430 80 L430 110 L460 110 L460 30 L500 30 L500 120 L530 120 L530 60 L560 60 L560 110 L600 110 L600 50 L640 50 L640 130 L680 130 L680 70 L720 70 L720 110 L760 110 L760 20 L800 20 L800 130 L840 130 L840 60 L880 60 L880 110 L920 110 L920 40 L960 40 L960 120 L1000 120 L1000 80 L1040 80 L1040 110 L1080 110 L1080 50 L1120 50 L1120 130 L1160 130 L1160 90 L1200 90 L1200 150 Z"></path>
+        </svg>
+    </div>
+
+    <div id="root"></div>
+
+    <script>
+        const starsContainer = document.getElementById('stars');
+        const count = 450;
+        for (let i = 0; i < count; i++) {
+            const star = document.createElement('div');
+            const isBright = Math.random() > 0.94;
+            star.className = isBright ? 'star bright' : 'star';
+            const size = Math.random() * (isBright ? 2.5 : 1.2) + 0.3;
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+            star.style.top = `${Math.random() * 85}%`; // Stay away from bottom cityscape
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.setProperty('--duration', `${Math.random() * 4 + 3}s`);
+            star.style.animationDelay = `${Math.random() * 10}s`;
+            starsContainer.appendChild(star);
+        }
+    </script>
+</body>
+</html>
