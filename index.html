@@ -16,14 +16,21 @@
             --accent-indigo: #6366f1;
             --city-glow: #0a192f;
         }
+        /* body 배경을 투명하게 하여 sky-container가 보이도록 함 */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--bg-deep);
+            background-color: transparent; 
             color: #ffffff;
             scroll-behavior: smooth;
             overflow-x: hidden;
             margin: 0;
             padding: 0;
+        }
+        /* root 요소가 배경보다 위에 오도록 설정 */
+        #root {
+            position: relative;
+            z-index: 10;
+            min-height: 100vh;
         }
         .serif {
             font-family: 'Playfair Display', serif;
@@ -143,6 +150,10 @@
             body { background: white !important; color: black !important; }
         }
     </style>
+    <!-- process.env undefined 에러 방지용 shim -->
+    <script>
+        window.process = window.process || { env: { API_KEY: "" } };
+    </script>
 <script type="importmap">
 {
   "imports": {

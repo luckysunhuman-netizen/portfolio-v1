@@ -38,9 +38,9 @@ const App: React.FC = () => {
   const deepTechProjects = useMemo(() => PROJECTS.slice(2), []);
 
   return (
-    <div className="min-h-screen relative selection:bg-indigo-500/30 bg-transparent">
+    <div className="min-h-screen relative selection:bg-indigo-500/30 bg-transparent z-10">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 glass border-b-0 py-5 px-6 md:px-12 flex justify-between items-center transition-all duration-500 print:hidden">
+      <nav className="fixed top-0 w-full z-[60] glass border-b-0 py-5 px-6 md:px-12 flex justify-between items-center transition-all duration-500 print:hidden">
         <div className="flex items-center space-x-3 group cursor-pointer" onClick={(e) => scrollToSection(e, 'about')}>
           <div className="w-9 h-9 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold shadow-[0_0_20px_rgba(79,70,229,0.5)] group-hover:scale-110 transition-transform">전</div>
           <span className="font-bold tracking-tight text-lg text-white/95 hidden sm:block">Jeon Hae-in</span>
@@ -68,7 +68,7 @@ const App: React.FC = () => {
         </button>
       </nav>
 
-      {/* Hero Section - Fully transparent to show stars */}
+      {/* Hero Section */}
       <section id="about" className="relative pt-60 pb-48 px-6 md:px-12 max-w-7xl mx-auto z-10">
         <div className="flex flex-col lg:flex-row items-center gap-24">
           <div className="flex-1 space-y-12 text-center lg:text-left">
@@ -109,8 +109,8 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* Experience Overview - Semi-transparent */}
-      <section className="px-6 md:px-12 py-32 bg-black/10 backdrop-blur-sm border-y border-white/5 relative z-10">
+      {/* Experience Overview */}
+      <section className="px-6 md:px-12 py-32 bg-black/20 backdrop-blur-sm border-y border-white/5 relative z-10">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-4 gap-20">
           {EXPERIENCES.map((exp) => (
             <div key={exp.id} className="group p-10 rounded-[2rem] transition-all hover:bg-white/[0.03] border border-transparent hover:border-white/5">
@@ -131,7 +131,7 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* Innovation Projects - Fully Transparent */}
+      {/* Innovation Projects */}
       <section id="projects" className="py-56 px-6 md:px-12 max-w-7xl mx-auto relative z-10 bg-transparent">
         <div className="mb-28 flex flex-col lg:flex-row lg:items-end justify-between gap-12">
           <div className="space-y-6">
@@ -150,8 +150,8 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* Engineering Excellence - Semi-transparent */}
-      <section id="deep-tech" className="py-56 bg-black/20 backdrop-blur-md relative z-10">
+      {/* Engineering Excellence */}
+      <section id="deep-tech" className="py-56 bg-black/40 backdrop-blur-md relative z-10">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="mb-36 text-center">
             <span className="text-xs font-black text-indigo-400 uppercase tracking-[0.5em] mb-6 block">Phase 02</span>
@@ -167,7 +167,7 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* Arsenal Section - Fully Transparent */}
+      {/* Arsenal Section */}
       <section id="skills" className="py-56 px-6 md:px-12 relative z-10 bg-transparent">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-32">
           <div className="lg:col-span-1 space-y-24">
@@ -237,7 +237,7 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* Values Section - Semi-transparent */}
+      {/* Values Section */}
       <section id="esg" className="py-56 bg-black/10 backdrop-blur-sm relative overflow-hidden z-10">
         <div className="absolute top-0 left-0 w-full h-1px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
         <div className="max-w-7xl mx-auto px-6 md:px-12">
@@ -258,7 +258,7 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* Final Call to Action - Fully Transparent to show Floating Stars */}
+      {/* Final Call to Action */}
       <footer id="contact" className="py-64 px-6 md:px-12 border-t border-white/5 print:hidden relative overflow-hidden bg-transparent z-10">
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between items-start lg:items-center gap-32">
           <div className="space-y-20">

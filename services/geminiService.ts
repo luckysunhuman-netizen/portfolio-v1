@@ -1,11 +1,19 @@
 
 import { GoogleGenAI } from "@google/genai";
 
-const API_KEY = process.env.API_KEY || "";
+const getApiKey = () => {
+    try {
+        return (typeof process !== 'undefined' && process.env?.API_KEY) || "";
+    } catch (e) {
+        return "";
+    }
+};
+
+const API_KEY = getApiKey();
 
 export const generatePortfolioImage = async (prompt: string): Promise<string | null> => {
   if (!API_KEY) {
-      console.warn("API Key is missing for image generation.");
+      console.warn("API Key is missing for image generation. Please check your Vercel Environment Variables.");
       return null;
   }
 
